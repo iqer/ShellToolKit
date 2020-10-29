@@ -20,4 +20,5 @@ for ip in ${iplist[@]}; do
     ssh root@${ip} fdisk -l | grep Disk | grep /dev/vdb | awk '{print$3}' >>/tmp/confirm_info.txt
 done
 
+# 每四行并做一行输出
 awk '{if (NR%4!=0) ORS=" ";else ORS="\n"}1' /tmp/confirm_info.txt
